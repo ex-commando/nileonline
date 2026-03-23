@@ -8,25 +8,25 @@
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
-- **🚀 Dynamic Hero Carousel**: A high-impact hero section with automated sliding, category badges, and interactive "floating" stats cards.
-- **📚 Integrated Program Explorer**: 
+- ** Dynamic Hero Carousel**: A high-impact hero section with automated sliding, category badges, and interactive "floating" stats cards.
+- ** Integrated Program Explorer**: 
   - **Mock API Integration**: Fetches real-time course/program data from a structured `/api/data.json`.
   - **Category Filtering**: Instantly filters programs by degree, executive, or short course categories.
   - **Interactive Carousel**: Horizontal scrolling program list with navigation controls and auto-looping.
   - **Skeleton Loading**: Graceful loading states for a smooth user experience.
-- **💎 Premium Design System**:
+- ** Premium Design System**:
   - **Modern Typography**: Uses 'Outfit' for headers and 'Plus Jakarta Sans' for body text.
   - **Rich Aesthetics**: Glassmorphism effects, vibrant brand colors, and curated HSL palettes.
   - **Interactive Animations**: Intersection Observer-based reveal-on-scroll animations and staggered delay effects.
-- **📱 Fully Responsive**: Optimized for mobile, tablet, and desktop viewports with a custom mobile navigation menu.
-- **💬 Testimonials**: Dynamic testimonial section with social proof from students and graduates.
-- **🏢 Corporate Solutions**: Dedicated section for organizational partnerships and workforce empowerment.
+- ** Fully Responsive**: Optimized for mobile, tablet, and desktop viewports with a custom mobile navigation menu.
+- ** Testimonials**: Dynamic testimonial section with social proof from students and graduates.
+- ** Corporate Solutions**: Dedicated section for organizational partnerships and workforce empowerment.
 
 ---
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 - **Framework**: [React 19](https://react.dev/)
 - **Build Tool**: [Vite 8](https://vitejs.dev/)
@@ -36,7 +36,7 @@
 
 ---
 
-## 📦 Project Structure
+##  Project Structure
 
 ```bash
 nileonline/
@@ -56,7 +56,7 @@ nileonline/
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -88,7 +88,7 @@ nileonline/
 
 ---
 
-## 🎨 Design Principles
+##  Design Principles
 
 The project follows these core design principles:
 1. **Clarity**: Information hierarchy is maintained through consistent use of scale and weight.
@@ -98,6 +98,6 @@ The project follows these core design principles:
 
 ---
 
-## 📄 License
+##  License
 
 This project is for internal use at Nile University. All rights reserved. &copy; 2026 Nile Online.
