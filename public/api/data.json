@@ -1,0 +1,91 @@
+{
+  "siteSettings": {
+    "stats": [
+      { "value": "100%", "label": "Flexible" },
+      { "value": "24/7", "label": "Access" },
+      { "value": "Top", "label": "Accreditation" }
+    ],
+    "heroStats": {
+      "value": "24/7",
+      "label": "Access"
+    }
+  },
+  "courses": [
+    {
+      "id": "c1",
+      "title": "Executive MBA",
+      "category": "Degree Programme",
+      "tag": "HYBRID",
+      "startDate": "27 March 2026",
+      "duration": "Postgraduate | 18 months",
+      "icon": "fa-graduation-cap",
+      "image": "https://nileonline.com.ng/hubfs/00.%20Degree%20Programmes/EMBA/Executive%20MBA_optimised.png"
+    },
+    {
+      "id": "c2",
+      "title": "Data Analytics & AI",
+      "category": "Professional Programme",
+      "tag": "ONLINE",
+      "startDate": "15 April 2026",
+      "duration": "Certificate | 12 weeks",
+      "icon": "fa-laptop-code",
+      "image": "https://nileonline.com.ng/hubfs/What%20is%20Nile%20Online.jpg"
+    },
+    {
+      "id": "c3",
+      "title": "MSc Computer Science",
+      "category": "Degree Programme",
+      "tag": "HYBRID",
+      "startDate": "30 March 2026",
+      "duration": "Postgraduate | 24 months",
+      "icon": "fa-cloud",
+      "image": "https://nileonline.com.ng/hubfs/Degree%20programmes-min.jpg"
+    },
+    {
+      "id": "c4",
+      "title": "Digital Marketing Strategy",
+      "category": "Short Course",
+      "tag": "ONLINE",
+      "startDate": "05 May 2026",
+      "duration": "Certificate | 8 weeks",
+      "icon": "fa-bullhorn",
+      "image": "https://nileonline.com.ng/hubfs/Short%20courses-min.jpg"
+    },
+    {
+      "id": "c5",
+      "title": "Advanced Leadership",
+      "category": "Executive Programme",
+      "tag": "HYBRID",
+      "startDate": "12 June 2026",
+      "duration": "Diploma | 6 months",
+      "icon": "fa-user-tie",
+      "image": "https://nileonline.com.ng/hubfs/International%20programmes-min.jpg"
+    },
+    {
+      "id": "c6",
+      "title": "Cybersecurity Fundamentals",
+      "category": "Professional Programme",
+      "tag": "ONLINE",
+      "startDate": "20 July 2026",
+      "duration": "Certificate | 10 weeks",
+      "icon": "fa-shield-halved",
+      "image": "https://nileonline.com.ng/hubfs/University%20bg-min-1.png"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "t1",
+      "name": "Sarah Jenkins",
+      "role": "MSc Graduate",
+      "quote": "The hybrid approach allowed me to complete my masters while working full-time. The curriculum is perfectly paced.",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah"
+    },
+    {
+      "id": "t2",
+      "name": "Michael Okafor",
+      "role": "Executive MBA Student",
+      "quote": "Unparalleled flexibility and world-class instructors. This has fundamentally shifted my career trajectory.",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael"
+    }
+  ]
+}
