@@ -308,7 +308,7 @@ img {
     justify-content: center;
     align-items: flex-end;
     min-height: 600px;
-    max-width: 600px;
+    max-width: 800px; /* Increased to accommodate orbiting cards */
 }
 
 .hero-bg-circle {
@@ -323,22 +323,46 @@ img {
     z-index: 0;
 }
 
-.hero-dashed-circle {
+.hero-dashed-circle,
+.hero-dashed-circle-mid,
+.hero-dashed-circle-inner {
     position: absolute;
-    width: 540px;
-    height: 540px;
-    border: 3px dashed var(--primary-light);
     border-radius: 50%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 0;
-    animation: rotateAntiClockwise 40s linear infinite;
+}
+
+.hero-dashed-circle {
+    width: 620px;
+    height: 620px;
+    border: 3.5px dashed rgba(28, 77, 161, 0.25); /* Bold Outer */
+    animation: rotateAntiClockwise 60s linear infinite;
+}
+
+.hero-dashed-circle-mid {
+    width: 530px;
+    height: 530px;
+    border: 1.5px dashed rgba(28, 77, 161, 0.15); /* Regular Mid */
+    animation: rotateClockwiseOnly 40s linear infinite;
+}
+
+.hero-dashed-circle-inner {
+    width: 440px;
+    height: 440px;
+    border: 0.8px dashed rgba(247, 148, 29, 0.15); /* Light Inner */
+    animation: rotateAntiClockwise 25s linear infinite;
 }
 
 @keyframes rotateAntiClockwise {
     from { transform: translate(-50%, -50%) rotate(0deg); }
     to { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+
+@keyframes rotateClockwiseOnly {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .reveal-on-scroll {
@@ -362,7 +386,7 @@ img {
     border-bottom-right-radius: 250px;
 }
 
-/* Floating Cards */
+/* Floating Cards (Orbiting) */
 .float-card {
     position: absolute;
     background: rgba(255, 255, 255, 0.85);
@@ -376,18 +400,6 @@ img {
     box-shadow: 0 16px 32px rgba(0,0,0,0.08);
     z-index: 2;
     animation: float 6s ease-in-out infinite;
-}
-
-.card-left {
-    bottom: 15%;
-    left: -40px;
-    animation-delay: 0s;
-}
-
-.card-right {
-    top: 50%;
-    right: -20px;
-    animation-delay: 2s;
 }
 
 .card-avatar {
@@ -435,6 +447,148 @@ img {
 
 .btn-small:hover {
     background-color: var(--primary-dark);
+}
+
+/* Programs Wheel Orbit */
+.hero-programs-wheel {
+    position: absolute;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.program-orbit {
+    position: absolute;
+    width: 200px; /* More compact for the orbit */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+    cursor: pointer;
+    z-index: 101;
+    /* Use translate to center, then rotate for orbit, then translate out, then inverse rotate to stay upright */
+    animation: orbitRotate 60s linear infinite;
+}
+
+@keyframes orbitRotate {
+    from { 
+        transform: rotate(0deg) translateX(270px) rotate(0deg); 
+    }
+    to { 
+        transform: rotate(360deg) translateX(270px) rotate(-360deg); 
+    }
+}
+
+.item-degree { animation-delay: 0s; }
+.item-short { animation-delay: -12.0s; }
+.item-edp { animation-delay: -24.0s; }
+.item-start { animation-delay: -36.0s; }
+.item-support { animation-delay: -48.0s; }
+
+.bounce-card {
+    animation: float 4s ease-in-out infinite !important;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    width: 200px;
+    padding: 14px;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-primary);
+}
+
+.bounce-card:hover {
+    transform: scale(1.1) !important;
+    background-color: var(--primary-dark) !important;
+    color: #fff !important;
+    z-index: 200;
+    border-color: var(--primary-dark);
+    box-shadow: 0 25px 50px rgba(13, 46, 104, 0.4);
+}
+
+.bounce-card:hover h4, 
+.bounce-card:hover p, 
+.bounce-card:hover i {
+    color: #fff !important;
+}
+
+.bounce-card:hover .icon-circle {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.program-orbit:hover {
+    animation-play-state: paused;
+}
+
+.bounce-card .icon-circle {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background-color: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.bounce-card h4 {
+    margin: 0 0 2px 0;
+    font-size: 14.5px;
+    font-weight: 700;
+}
+
+.bounce-card p, .bounce-card .btn-small {
+    margin: 0;
+    font-size: 11px;
+}
+
+.bounce-card p {
+    color: var(--text-secondary);
+}
+
+.bounce-card .btn-small {
+    padding: 2px 8px;
+    margin-top: 4px;
+    display: inline-block;
+}
+
+@media (max-width: 992px) {
+    .hero-programs-wheel {
+        width: 360px;
+        height: 360px;
+    }
+    .program-orbit {
+        width: 180px;
+    }
+    @keyframes orbitRotate {
+        from { transform: rotate(0deg) translateX(180px) rotate(0deg); }
+        to { transform: rotate(360deg) translateX(180px) rotate(-360deg); }
+    }
+    .bounce-card {
+        width: 160px;
+        padding: 10px;
+    }
+    .bounce-card .icon-circle {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+    .bounce-card h4 {
+        font-size: 13px;
+    }
+    .bounce-card p {
+        font-size: 10px;
+    }
 }
 
 @media (max-width: 992px) {

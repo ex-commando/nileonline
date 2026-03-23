@@ -67,7 +67,7 @@ function App() {
   useEffect(() => {
     const container = document.getElementById('prog-carousel');
     let autoScrollInterval;
-    
+
     if (container && !loading) {
       const scrollLoop = () => {
         if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
@@ -76,20 +76,20 @@ function App() {
           container.scrollBy({ left: 380, behavior: 'smooth' });
         }
       };
-      
+
       autoScrollInterval = setInterval(scrollLoop, 3500);
-      
+
       const pauseScroll = () => clearInterval(autoScrollInterval);
       const resumeScroll = () => {
         clearInterval(autoScrollInterval);
         autoScrollInterval = setInterval(scrollLoop, 3500);
       };
-      
+
       container.addEventListener('mouseenter', pauseScroll);
       container.addEventListener('mouseleave', resumeScroll);
       container.addEventListener('touchstart', pauseScroll, { passive: true });
       container.addEventListener('touchend', resumeScroll, { passive: true });
-      
+
       return () => {
         clearInterval(autoScrollInterval);
         container.removeEventListener('mouseenter', pauseScroll);
@@ -117,7 +117,7 @@ function App() {
       el.style.transitionDelay = `${(i % 3) * 0.15}s`;
       observer.observe(el);
     });
-    
+
     return () => observer.disconnect();
   }, [loading]);
 
@@ -147,15 +147,15 @@ function App() {
   const HoverCard = ({ bgImage, tag, date, type, title, duration, icon }) => {
     const [hover, setHover] = useState(false);
     return (
-      <div 
+      <div
         className="programme-card"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
         <a href="#programme">
-          <div 
-            className="prog-image" 
-            style={{ 
+          <div
+            className="prog-image"
+            style={{
               backgroundImage: `url('${bgImage}')`,
               transform: hover ? 'scale(1.03)' : 'scale(1)',
               transition: 'transform 0.5s ease',
@@ -188,7 +188,7 @@ function App() {
           <a href="#" className="brand-logo" onClick={(e) => handleSmoothScroll(e, '#hero')}>
             <img src="https://nileonline.com.ng/hubfs/Imported%20images/logo-landscape.svg" alt="Nile Online Logo" style={{ height: '44px' }} />
           </a>
-          
+
           <div className="nav-links">
             <a href="#business-school" className="nav-link">Nile Business School</a>
             <a href="#organisations" className="nav-link">For Organisations</a>
@@ -224,9 +224,9 @@ function App() {
               <div key={`badge-${currentSlide}`} className="hero-badge fade-up" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', background: 'var(--bg-alt)', border: '1px solid rgba(0,0,0,0.05)', padding: '8px 18px', borderRadius: 'var(--radius-full)', fontSize: '14px', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: '32px' }}>
                 <span className="pulse-dot" style={{ width: '8px', height: '8px', backgroundColor: 'var(--primary)', borderRadius: '50%', boxShadow: '0 0 0 0 rgba(28, 77, 161, 0.4)' }}></span> {heroSlides[currentSlide].badge}
               </div>
-              
+
               <h1 key={`title-${currentSlide}`} className="fade-up delay-1" style={{ whiteSpace: 'pre-line' }}>
-                {heroSlides[currentSlide].title1} <br/>
+                {heroSlides[currentSlide].title1} <br />
                 <span className="text-highlight">{heroSlides[currentSlide].highlight}</span>{heroSlides[currentSlide].title2}
               </h1>
               <p key={`desc-${currentSlide}`} className="fade-up delay-2">
@@ -235,58 +235,91 @@ function App() {
               <div className="hero-buttons fade-up delay-3">
                 <a href="#tailored-learning" className="btn btn-primary" onClick={(e) => handleSmoothScroll(e, '#tailored-learning')} style={{ backgroundColor: 'var(--primary)', color: '#fff', padding: '18px 36px', borderRadius: 'var(--radius-full)', fontWeight: 700, display: 'inline-flex', alignItems: 'center' }}>
                   Explore Programmes
-                  <i className="fa-solid fa-arrow-right" style={{marginLeft: '10px'}}></i>
+                  <i className="fa-solid fa-arrow-right" style={{ marginLeft: '10px' }}></i>
                 </a>
                 <a href="#register" className="btn btn-outline-dark" style={{ border: '1.5px solid rgba(0,0,0,0.1)', color: 'var(--text-primary)', background: 'transparent', padding: '18px 36px', borderRadius: 'var(--radius-full)', fontWeight: 700 }}>
                   Contact Admissions
                 </a>
               </div>
-              
+
               {/* Slider Dots */}
               <div className="slider-dots" style={{ display: 'flex', gap: '8px', marginTop: '40px' }}>
                 {heroSlides.map((_, i) => (
-                  <button 
-                    key={i} 
-                    onClick={() => setCurrentSlide(i)} 
-                    style={{ 
-                      width: i === currentSlide ? '32px' : '10px', 
-                      height: '10px', 
-                      borderRadius: '5px', 
-                      backgroundColor: i === currentSlide ? 'var(--primary)' : '#ccc', 
-                      border: 'none', 
-                      transition: 'all 0.3s ease', 
-                      cursor: 'pointer' 
+                  <button
+                    key={i}
+                    onClick={() => setCurrentSlide(i)}
+                    style={{
+                      width: i === currentSlide ? '32px' : '10px',
+                      height: '10px',
+                      borderRadius: '5px',
+                      backgroundColor: i === currentSlide ? 'var(--primary)' : '#ccc',
+                      border: 'none',
+                      transition: 'all 0.3s ease',
+                      cursor: 'pointer'
                     }}
                   />
                 ))}
               </div>
             </div>
-            
+
             <div className="hero-image-wrapper">
               <div className="hero-bg-circle" style={{ overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                 <img src="/hero_man.png" alt="Student" style={{ width: '100%', height: '100%', objectFit: 'cover', zIndex: 1, position: 'relative' }} />
+                <img src="/hero_man.png" alt="Student" style={{ width: '100%', height: '100%', objectFit: 'cover', zIndex: 1, position: 'relative' }} />
               </div>
               <div className="hero-dashed-circle"></div>
-              
-              {/* Floating cards */}
-              <div className="float-card card-left">
-                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&h=100&fit=crop" alt="Instructor" className="card-avatar" />
-                <div className="card-text">
-                  <h4>Learn Anywhere</h4>
-                  <button className="btn-small">Join now</button>
-                </div>
-              </div>
+              <div className="hero-dashed-circle-inner"></div>
+              <div className="hero-dashed-circle-mid"></div>
 
-              <div className="float-card card-right">
-                <div className="icon-circle">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="feather feather-arrow-up-right">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
-                  </svg>
+              {/* Programs Wheel */}
+              <div className="hero-programs-wheel">
+                <div className="program-orbit item-degree" onClick={(e) => { setActiveFilter('Degree Programs'); handleSmoothScroll(e, '#programmes'); }}>
+                  <div className="float-card bounce-card">
+                    <div className="icon-circle"><i className="fa-solid fa-graduation-cap"></i></div>
+                    <div className="card-text">
+                      <h4>Degree</h4>
+                      <p>Full-time Online</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="card-text">
-                  <h4>100+</h4>
-                  <p>Online courses</p>
+                <div className="program-orbit item-short" onClick={(e) => { setActiveFilter('Short course'); handleSmoothScroll(e, '#programmes'); }}>
+                  <div className="float-card bounce-card">
+                    <div className="icon-circle"><i className="fa-solid fa-laptop-code"></i></div>
+                    <div className="card-text">
+                      <h4>Shortcourses</h4>
+                      <p>Upskill Fast</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="program-orbit item-edp" onClick={(e) => { setActiveFilter('EDP'); handleSmoothScroll(e, '#programmes'); }}>
+                  <div className="float-card bounce-card">
+                    <div className="icon-circle"><i className="fa-solid fa-user-tie"></i></div>
+                    <div className="card-text">
+                      <h4>EDP</h4>
+                      <p>Exec. Development</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="program-orbit item-start">
+                  <div className="float-card bounce-card">
+                    <div className="icon-circle">
+                      <i className="fa-solid fa-rocket"></i>
+                    </div>
+                    <div className="card-text">
+                      <h4>Get Started</h4>
+                      <p>Admissions Open</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="program-orbit item-support">
+                  <div className="float-card bounce-card">
+                    <div className="icon-circle">
+                      <i className="fa-solid fa-headset"></i>
+                    </div>
+                    <div className="card-text">
+                      <h4>24/7</h4>
+                      <p>Support Team</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -348,11 +381,11 @@ function App() {
           <div className="section-header center">
             <h2>Featured programmes now available</h2>
           </div>
-          
+
           <div className="programmes-filter reveal-on-scroll" style={{ display: 'flex', justifyContent: 'center', gap: '12px', marginBottom: '35px', flexWrap: 'wrap' }}>
             {['All', 'Degree Programs', 'Short course', 'EDP'].map(filter => (
-              <button 
-                key={filter} 
+              <button
+                key={filter}
                 onClick={() => setActiveFilter(filter)}
                 style={{
                   padding: '8px 20px',
@@ -370,26 +403,26 @@ function App() {
               </button>
             ))}
           </div>
-          
+
           <div className="carousel-wrapper" style={{ position: 'relative' }}>
             <button className="carousel-btn left" onClick={() => scrollProgrammes('left')}><i className="fa-solid fa-chevron-left"></i></button>
             <div className="programmes-carousel" id="prog-carousel">
               {loading ? (
-                 Array.from({ length: 3 }).map((_, i) => (
-                   <div key={`skel-${i}`} className="programme-card skeleton-card">
-                     <div className="skeleton" style={{ height: '220px', width: '100%' }}></div>
-                     <div className="prog-details">
-                       <div className="skeleton" style={{ height: '12px', width: '40%', marginBottom: '12px' }}></div>
-                       <div className="skeleton" style={{ height: '28px', width: '80%', marginBottom: '20px' }}></div>
-                       <div style={{ marginTop: 'auto', paddingTop: '20px', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-                         <div className="skeleton" style={{ height: '14px', width: '60%' }}></div>
-                       </div>
-                     </div>
-                   </div>
-                 ))
+                Array.from({ length: 3 }).map((_, i) => (
+                  <div key={`skel-${i}`} className="programme-card skeleton-card">
+                    <div className="skeleton" style={{ height: '220px', width: '100%' }}></div>
+                    <div className="prog-details">
+                      <div className="skeleton" style={{ height: '12px', width: '40%', marginBottom: '12px' }}></div>
+                      <div className="skeleton" style={{ height: '28px', width: '80%', marginBottom: '20px' }}></div>
+                      <div style={{ marginTop: 'auto', paddingTop: '20px', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+                        <div className="skeleton" style={{ height: '14px', width: '60%' }}></div>
+                      </div>
+                    </div>
+                  </div>
+                ))
               ) : (
                 filteredCourses.map(course => (
-                  <HoverCard 
+                  <HoverCard
                     key={course.id}
                     bgImage={course.image}
                     tag={course.tag}
@@ -404,7 +437,7 @@ function App() {
             </div>
             <button className="carousel-btn right" onClick={() => scrollProgrammes('right')}><i className="fa-solid fa-chevron-right"></i></button>
           </div>
-          
+
           <div className="center-btn-wrapper mt-40">
             <a href="#view-all" className="btn btn-outline">View all programmes</a>
           </div>
@@ -497,31 +530,31 @@ function App() {
           </div>
           <div className="testimonials-grid">
             {loading ? (
-               Array.from({ length: 2 }).map((_, i) => (
-                 <div key={`tsk-${i}`} className="testimonial-card">
-                   <div className="skeleton" style={{ height: '80px', width: '100%', marginBottom: '20px' }}></div>
-                   <div className="testimonial-author">
-                     <div className="skeleton" style={{ height: '48px', width: '48px', borderRadius: '50%' }}></div>
-                     <div>
-                       <div className="skeleton" style={{ height: '14px', width: '120px', marginBottom: '8px' }}></div>
-                       <div className="skeleton" style={{ height: '12px', width: '80px' }}></div>
-                     </div>
-                   </div>
-                 </div>
-               ))
+              Array.from({ length: 2 }).map((_, i) => (
+                <div key={`tsk-${i}`} className="testimonial-card">
+                  <div className="skeleton" style={{ height: '80px', width: '100%', marginBottom: '20px' }}></div>
+                  <div className="testimonial-author">
+                    <div className="skeleton" style={{ height: '48px', width: '48px', borderRadius: '50%' }}></div>
+                    <div>
+                      <div className="skeleton" style={{ height: '14px', width: '120px', marginBottom: '8px' }}></div>
+                      <div className="skeleton" style={{ height: '12px', width: '80px' }}></div>
+                    </div>
+                  </div>
+                </div>
+              ))
             ) : (
-               apiData.testimonials.map(t => (
-                 <div key={t.id} className="testimonial-card fade-up">
-                   <p className="quote">"{t.quote}"</p>
-                   <div className="testimonial-author">
-                     <img src={t.avatar} alt={t.name} />
-                     <div className="author-info">
-                       <h5 className="author-name">{t.name}</h5>
-                       <span className="author-role">{t.role}</span>
-                     </div>
-                   </div>
-                 </div>
-               ))
+              apiData.testimonials.map(t => (
+                <div key={t.id} className="testimonial-card fade-up">
+                  <p className="quote">"{t.quote}"</p>
+                  <div className="testimonial-author">
+                    <img src={t.avatar} alt={t.name} />
+                    <div className="author-info">
+                      <h5 className="author-name">{t.name}</h5>
+                      <span className="author-role">{t.role}</span>
+                    </div>
+                  </div>
+                </div>
+              ))
             )}
           </div>
         </div>
